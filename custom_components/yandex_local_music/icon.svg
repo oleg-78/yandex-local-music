@@ -1,28 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- Body -->
-  <rect x="12" y="14" width="40" height="36" rx="14" fill="#6BCF8E"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <!-- Background -->
+  <rect x="0" y="0" width="256" height="256" rx="48" fill="#F5F7FA"/>
 
-  <!-- Top highlight -->
-  <ellipse cx="32" cy="18" rx="14" ry="3" fill="#7FE0A4" opacity="0.6"/>
+  <!-- NAS block -->
+  <rect x="36" y="76" width="56" height="104" rx="10" fill="#3A3F45"/>
+  <rect x="48" y="92" width="32" height="8" rx="4" fill="#8FAADC"/>
+  <rect x="48" y="112" width="32" height="8" rx="4" fill="#8FAADC"/>
+  <rect x="48" y="132" width="32" height="8" rx="4" fill="#8FAADC"/>
+  <circle cx="80" cy="164" r="4" fill="#8FD18B"/>
 
-  <!-- Clock display -->
-  <rect x="20" y="26" width="24" height="10" rx="3" fill="#4CAF50"/>
+  <!-- Sound waves -->
+  <path d="M108 128
+           c16 -20 16 20 32 0
+           c16 -20 16 20 32 0"
+        fill="none"
+        stroke="#4C84FF"
+        stroke-width="8"
+        stroke-linecap="round"/>
 
-  <!-- Digits (12:35 stylized) -->
-  <g fill="#DFFFEA">
-    <!-- 1 -->
-    <rect x="22" y="28" width="2" height="6"/>
-    <!-- 2 -->
-    <path d="M26 28 h4 v2 h-4 v2 h4 v2 h-6 v-2 h4 v-2 h-4 z"/>
-    <!-- : -->
-    <circle cx="32" cy="30" r="1"/>
-    <circle cx="32" cy="34" r="1"/>
-    <!-- 3 -->
-    <path d="M35 28 h4 v2 h-4 v2 h4 v2 h-4"/>
-    <!-- 5 -->
-    <path d="M40 28 h4 v2 h-4 v2 h4 v4 h-6 v-2 h4 v-2 h-4 z"/>
-  </g>
-
-  <!-- Bottom base -->
-  <rect x="16" y="48" width="32" height="4" rx="2" fill="#58B77B"/>
+  <!-- Smart speaker -->
+  <circle cx="188" cy="128" r="28" fill="#3A3F45"/>
+  <circle cx="188" cy="128" r="10" fill="#4C84FF"/>
 </svg>
