@@ -184,3 +184,4 @@ Optimized for Home Assistant UI and HACS.
 Created with ❤️ for Home Assistant
 Author: OLEG RESHETNIKOV
 
+<!-- trigger hacs -->
