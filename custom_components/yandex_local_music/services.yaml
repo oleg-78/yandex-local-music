@@ -1,0 +1,12 @@
+play_random:
+  name: Play random track
+  description: Play a random track from the indexed local/NAS music folder.
+  fields:
+    volume_level:
+      name: Volume
+      description: Optional volume before playback (0.0 – 1.0)
+      example: 0.3
+
+rebuild_index:
+  name: Rebuild index
+  description: Rescan the media folder and rebuild the track index.
