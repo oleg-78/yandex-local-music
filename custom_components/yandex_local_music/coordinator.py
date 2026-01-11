@@ -59,7 +59,6 @@ class YLMCoordinator:
             STORE_VERSION,
             STORE_KEY_FMT.format(entry_id=entry.entry_id),
         )
-
         self._tracks: List[Track] = []
         self._history: deque[str] = deque(maxlen=self.max_history)
 
@@ -70,21 +69,20 @@ class YLMCoordinator:
 
         await self.async_rebuild_index()
 
-    # 🔁 РЕКУРСИВНЫЙ ОБХОД
+    # РЕКУРСИВНЫЙ ОБХОД
     async def _browse_recursive(self, media_id: str, tracks: List[Track]) -> None:
         node = await media_source.async_browse_media(self.hass, media_id)
 
         for child in getattr(node, "children", []) or []:
-            # папка → уходим глубже
+            # Папка → уходим глубже
             if getattr(child, "children", None) is not None:
                 await self._browse_recursive(child.media_content_id, tracks)
                 continue
 
-            # файл музыки
+            # Музыкальный файл
             if getattr(child, "media_class", None) == "music":
                 title = child.title or child.media_content_id.rsplit("/", 1)[-1]
                 mime = _guess_mime(title)
-
                 tracks.append(
                     Track(
                         media_content_id=child.media_content_id,
@@ -95,15 +93,13 @@ class YLMCoordinator:
 
     async def async_rebuild_index(self) -> int:
         tracks: List[Track] = []
-
         await self._browse_recursive(self.folder_id, tracks)
 
+        # Сортировка по имени
         tracks.sort(key=lambda t: t.title.lower())
-        self._tracks = tracks
 
-        await self._store.async_save(
-            {"tracks": [t.__dict__ for t in tracks]}
-        )
+        self._tracks = tracks
+        await self._store.async_save({"tracks": [t.__dict__ for t in tracks]})
 
         return len(tracks)
 
@@ -111,13 +107,13 @@ class YLMCoordinator:
         if not self._tracks:
             return None
 
+        # исключаем недавние повторы
         candidates = [
-            t for t in self._tracks
-            if t.media_content_id not in self._history
+            t for t in self._tracks if t.media_content_id not in self._history
         ]
 
         if not candidates:
-            candidates = self._tracks[:]
+            candidates = self._tracks[:]  # всё уже было — разрешаем повтор
 
         chosen = random.choice(candidates)
         self._history.append(chosen.media_content_id)
