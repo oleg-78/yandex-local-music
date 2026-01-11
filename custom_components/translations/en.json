@@ -1,0 +1,15 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Yandex Local Music",
+        "description": "Configure local/NAS music playback for Yandex Station",
+        "data": {
+          "player_entity_id": "Yandex Station media player",
+          "media_folder_id": "Media Source folder (media-source://...)",
+          "max_history": "Tracks history length"
+        }
+      }
+    }
+  }
+}
