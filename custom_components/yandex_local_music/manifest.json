@@ -5,5 +5,6 @@
   "config_flow": true,
   "iot_class": "local_push",
   "documentation": "https://github.com/oleg-78/yandex-local-music",
+  "issue_tracker": "https://github.com/oleg-78/yandex-local-music/issues",
   "codeowners": ["@oleg-78"]
 }
